@@ -1,0 +1,70 @@
+<% include ../admin-partials/header %>
+<section>
+    <div class="container">
+        <h3>Create A New Property</h3>
+        <form action="/jobs" method="POST">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="title" placeholder="Job Title">
+                    </div>
+                     <div class="image-upload" class="form-group">
+                        <input type="file" class="form-control" accept=".jpg,.png, .mp4" name="image" placeholder="Upload Image">
+                        <progress class="custom-progress" value="0"></progress>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <p>Gallery Images</p>
+                     <div class="image-upload" class="form-group">
+                        <input type="file" class="form-control" accept=".jpg,.png, .mp4" name="image" placeholder="Upload Image">
+                        <progress class="custom-progress" value="0"></progress>
+                        <button class="green btn">Add another image</button>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="role" placeholder="Bedrooms">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="location" placeholder="Bathrooms">
+                    </div>
+                   <div class="form-group">
+                        <input class="form-control" type="text" name="term" placeholder="Contract or Perm?">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="price" placeholder="50'000 for e.g.">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                 <div class="col-12">
+                    <p>English <img src="/img/flags/en_lan.svg" width="30" height="25" /></p>
+                    <div class="form-group">
+                        <textarea class="form-control froala" type="text" name="english" placeholder="Description">
+                        </textarea>
+                    </div>
+                    <p>Spanish <img src="/img/flags/es_lan.svg" width="30" height="25" /></p>
+                    <div class="form-group">
+                        <textarea class="form-control froala" type="text" name="spanish" placeholder="Escribe algo...">
+                        </textarea>
+                    </div>
+                    <p>French <img src="/img/flags/fr_lan.svg" width="30" height="25" /></p>
+                    <div class="form-group">
+                        <textarea class="form-control froala" type="text" name="french" placeholder="Tapez quelque chose ...">
+                        </textarea>
+                    </div>
+                    <p>Russian <img src="/img/flags/ru_lan.svg" width="30" height="25" /></p>
+                    <div class="form-group">
+                        <textarea class="form-control froala" type="text" name="russian" placeholder="Введите что-либо...">
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block">Create role</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<% include ../admin-partials/footer %>
