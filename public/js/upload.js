@@ -3,17 +3,13 @@
 const upload = document.getElementsByClassName("image-upload");
 
 if (upload.length) {
-    var i;
-
-    for (i = 0; i < upload.length; i++) {
+    for (var i = 0; i < upload.length; i++) {
         var eachUpload = upload[i];
         var input = eachUpload.getElementsByClassName('form-control')[0];
         var progress = eachUpload.getElementsByClassName('custom-progress')[0];
         getImageUpload(eachUpload, input, progress);
     }
 }
-
-
 
 function getImageUpload(eachUpload, input, progress) {
     if (input) {
@@ -48,6 +44,28 @@ function getSignedRequest(eachUpload, file, progress) {
     xhr.send();
 }
 
+Element.prototype.appendAfter = function (element) {
+  element.parentNode.insertBefore(this, element.nextSibling);
+},false;
+
+function addNewImageUpload() {
+    var addImageBtn = document.getElementsByClassName('add-image');
+    if (addImageBtn) {
+        for (var i = 0; i < addImageBtn.length; i++) {
+            addImageBtn[i].addEventListener('click', function(e){
+                e.preventDefault();
+                var parent = this.parentNode;
+                var newImage = parent.cloneNode(true);
+                newImage.appendAfter(parent);
+                addNewImageUpload();
+            }, false);
+        }
+    }
+
+}
+
+addNewImageUpload();
+
 function uploadFile(eachUpload, file, signedRequest, url, progress) {
 
     // AJAX
@@ -71,17 +89,29 @@ function uploadFile(eachUpload, file, signedRequest, url, progress) {
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                var previewImage = eachUpload.getElementsByClassName("preview-image");
+                var previewImage = eachUpload.querySelector("preview-image");
+                var addImageBtn = eachUpload.getElementsByClassName('add-image');
+                var newPreviewImage = document.createElement("img");
+                newPreviewImage.className = "preview-image";
+                var uploadedCheck = document.createElement('i');
+                uploadedCheck.className = "fas fa-check-circle";
+                var previewImageHover = document.createElement('i');
+                previewImageHover.className = "fas fa-eye";
+
                 progress.style.display = "none";
-                if (previewImage[0]) {
-                	previewImage[0].src = url;
+
+                if (previewImage) {
+                	previewImage.src = url;
                 }
+
                 else {
-                    var newPreviewImage = document.createElement("IMG");
-                    newPreviewImage.className = "preview-image";
+
                     progress.style.display = "none";
                 	newPreviewImage.src = url;
+                    console.log(uploadedCheck);
+                    eachUpload.appendChild(uploadedCheck);
                 	eachUpload.appendChild(newPreviewImage);
+                    eachUpload.appendChild(previewImageHover);
                 }
             }
             else {
@@ -101,6 +131,8 @@ function Froala() {
         var placeHolderText = $froala[i].getAttribute("placeholder");
 
     }
+
+    // Need a new key for Fly Sun Villas
 
     $.each( $froala, function( key, value ) {
         $(this).froalaEditor({

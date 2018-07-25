@@ -1,43 +1,78 @@
 <% include ../admin-partials/header %>
 <section>
-    <div class="container">
-        <h3>Create A New Property</h3>
+    <div class="container admin">
         <form action="/jobs" method="POST">
             <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="title" placeholder="Job Title">
-                    </div>
-                     <div class="image-upload" class="form-group">
-                        <input type="file" class="form-control" accept=".jpg,.png, .mp4" name="image" placeholder="Upload Image">
-                        <progress class="custom-progress" value="0"></progress>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <p>Gallery Images</p>
-                     <div class="image-upload" class="form-group">
-                        <input type="file" class="form-control" accept=".jpg,.png, .mp4" name="image" placeholder="Upload Image">
-                        <progress class="custom-progress" value="0"></progress>
-                        <button class="green btn">Add another image</button>
-                    </div>
+                <div class="col-12">
+                    <h3 for="title">Property Information <i class="fas fa-table"></i></h3>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
-                        <input class="form-control" type="text" name="role" placeholder="Bedrooms">
+                        <label for="title">Property Title</label>
+                        <input class="form-control" type="text" name="title" placeholder="e.g. 'La Salamandra'">
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="location" placeholder="Bathrooms">
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <label for="bedrooms">Bedrooms</label>
+                            <input class="form-control" type="text" name="bedrooms" placeholder="e.g. 2">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="bathrooms">Bathrooms</label>
+                            <input class="form-control" type="text" name="bathrooms" placeholder="Bathrooms">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="bathrooms">House Built Area</label>
+                            <input class="form-control" type="text" name="build" placeholder="e.g. 160,000 m2">
+                        </div>
                     </div>
-                   <div class="form-group">
-                        <input class="form-control" type="text" name="term" placeholder="Contract or Perm?">
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <label for="basement">Basement</label>
+                            <input class="form-control" type="text" name="basement" placeholder="e.g. 55'000 m2">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="terraces">Terraces</label>
+                            <input class="form-control" type="text" name="bathrooms" placeholder="e.g. 2">
+                        </div>
+                        <div class="form-group col-4">
+                            <label>Swimming Pool</label>
+                            <select name="pool" class="form-control">
+                                <option value="no" default>No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="price" placeholder="50'000 for e.g.">
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <label for="terraces">Total m2</label>
+                            <input class="form-control" type="text" name="total" placeholder="e.g. 160,000 m2">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="plot">Total Plot Area</label>
+                            <input class="form-control" type="text" name="plot" placeholder="e.g. 660,000 m2">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="image-upload" class="form-group">
+                        <label>Main Image/Media <i class="far fa-images"></i></label>
+                        <input type="file" class="form-control" accept=".jpg,.png, .mp4" name="image" placeholder="Upload Image">
+                        <progress class="custom-progress" value="0"></progress>
+                    </div>
+                    <hr />
+                    <label>Gallery Images <i class="far fa-images"></i></label>
+                    <div class="image-upload" class="form-group">
+                        <input type="file" class="form-control" accept=".jpg, .png, .mp4" name="image" placeholder="Upload Image">
+                        <progress class="custom-progress" value="0"></progress>
                     </div>
                 </div>
             </div>
+            <hr />
             <div class="row">
-                 <div class="col-12">
+                <div class="col-12">
+                    <p>Write your descriptions of each property here.</p>
+                </div>
+                <div class="col-12">
                     <p>English <img src="/img/flags/en_lan.svg" width="30" height="25" /></p>
                     <div class="form-group">
                         <textarea class="form-control froala" type="text" name="english" placeholder="Description">
@@ -59,7 +94,7 @@
                         </textarea>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-lg btn-primary btn-block">Create role</button>
+                        <button class="btn btn-lg btn-primary btn-block">Create property</button>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,28 @@
+body {
+	background: #ececec;
+}
+
+.admin {
+	font-family: arial;
+	h3 {
+		margin-bottom: 2rem;
+	}
+	input {
+		border-radius: 3px;
+	}
+	.image-upload {
+		position: relative;
+		input {
+			width: 80%;
+		}
+		.preview-image {
+			display: none;
+		}
+		.fa-check-circle {
+			position: absolute;
+		    right: 0;
+		    top: 13px;
+		    color: green;
+		}
+	}
+}
