@@ -45,12 +45,13 @@
                                 <li><a href="/es/"><img src="/img/flags/es_lan.svg" width="30" height="25" /></a></li>
                                 <li><a href="/fr/"><img src="/img/flags/fr_lan.svg" width="30" height="25" /></a></li>
                                 <li><a href="/ru/"><img src="/img/flags/ru_lan.svg" width="30" height="25" /></a></li>
+                                <li><a href="/gr/"><img src="/img/flags/gr_lan.svg" width="30" height="25" /></a></li>
                             </ul>
                         </li>
                          <% if (currentUser && currentUser.hash) { %>
                          <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle user-icon" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= currentUser.username %></a>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="/admin/new">Add New Property</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/logout">Logout</a>

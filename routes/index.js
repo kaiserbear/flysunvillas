@@ -37,6 +37,10 @@ router.get("/ru/", middleware.checkCountrySelection, function(req, res){
   getAllPropertys(res.locals.country + "index", res);
 });
 
+router.get("/gr/", middleware.checkCountrySelection, function(req, res){
+  getAllPropertys(res.locals.country + "index", res);
+});
+
 router.get("/en/properties/", middleware.checkCountrySelection, function(req, res){
   getAllPropertys(res.locals.country + "index", res);
 });
@@ -46,6 +50,14 @@ router.get("/fr/proprietes/", middleware.checkCountrySelection, function(req, re
 });
 
 router.get("/es/propiedades/", middleware.checkCountrySelection, function(req, res){
+  getAllPropertys(res.locals.country + "index", res);
+});
+
+router.get("/ru/properties/", middleware.checkCountrySelection, function(req, res){
+  getAllPropertys(res.locals.country + "index", res);
+});
+
+router.get("/gr/properties/", middleware.checkCountrySelection, function(req, res){
   getAllPropertys(res.locals.country + "index", res);
 });
 

@@ -1,19 +1,20 @@
 body {
   background: #ececec; }
 
-.admin {
-  font-family: arial; }
-  .admin h3 {
+.container.admin {
+  font-family: arial;
+  padding-top: 5rem; }
+  .container.admin h3 {
     margin-bottom: 2rem; }
-  .admin input {
+  .container.admin input {
     border-radius: 3px; }
-  .admin .image-upload {
+  .container.admin .image-upload {
     position: relative; }
-    .admin .image-upload input {
+    .container.admin .image-upload input {
       width: 80%; }
-    .admin .image-upload .preview-image {
+    .container.admin .image-upload .preview-image {
       display: none; }
-    .admin .image-upload .fa-check-circle {
+    .container.admin .image-upload .fa-check-circle {
       position: absolute;
       right: 0;
       top: 13px;

@@ -1,0 +1,26 @@
+<% include header %>
+<section class="hero full-width animated fadeIn">
+	<h1>Fly Sun Villas</h1>
+	<img src="/img/fly-sun-villas.png" alt="Fly Sun Villas">
+	<div class="container">
+		<div class="row">
+			<p>Greek Index</p>
+			<p>Λορεμ ιπσθμ δολορ σιτ αμετ, αδ τατιον cαθσαε νολθισσε μελ, εοσ εξ νοστερ ποσσιμ αλιqθανδο. Σανcτθσ αccθσατα ιντελλεγαμ εαμ θτ, ηαβεο λαορεετ ομιτταμ vιξ τε. Ιν vιμ ηαβεμθσ cονcλθδατθρqθε. Λαορεετ cορρθμπιτ δισσεντιετ cθ ηασ, ει cηορο ηονεστατισ πρι, αν αλιqθιδ εξπετενδα πηιλοσοπηια σεδ. Μεισ cλιτα ποστεα θσθ τε, μελ νε ιδqθε φαcιλισ περσεqθερισ.</p>
+			<p>Ετ πρι νοvθμ τιμεαμ. Vισ εα λορεμ γραεcι πετεντιθμ, ιδ ιμπετθσ δενιqθε vιμ. Ει σεα οδιο vερι περτιναcια, ιραcθνδια μνεσαρcηθμ μελ ιδ. Ιδqθε διcθντ ιθvαρετ θτ ηισ. Πρι τε ηομερο φαcιλισισ αλιqθανδο. Ηισ ετ βρθτε ομνιθμ ελειφενδ.</p>
+		</div>
+	</div>
+	<div class="row">
+	    <% propertys.reverse().slice(-9).forEach(function(property){ %>
+	        <div class="col-sm-6 col-md-4 role">
+	        	<a href="/property/<%= property._id %>">
+		        	<div class="image">
+		                  <img src="https://flysunvillas.s3.amazonaws.com/<%= property.image1 %>">
+		             </div>
+		          	<h3><%= property.title %></h3>
+		          	<p><%- property.description %></p>
+		         </a>
+	        </div>
+	    <% }); %>
+	</div>
+</section>
+<% include ../full-partials/footer %>
