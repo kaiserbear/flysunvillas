@@ -1,0 +1,25 @@
+// Navigation
+
+.alerts {
+    border-radius: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 40;
+}
+
+.alerts {
+    .alert {
+        &.alert-success {
+            color: $black;
+            background-color: $white;
+            border: none;
+            border-radius: inherit;
+        }
+
+        .close {
+            color: $white;
+            text-shdow: none;
+        }
+    }
+}

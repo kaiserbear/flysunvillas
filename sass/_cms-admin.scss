@@ -3,6 +3,7 @@
 
 .container {
 	&.admin {
+		height: calc(100% - 400px);
 		font-family: arial;
 		padding-top: 5rem;
 		h3 {

@@ -6241,7 +6241,9 @@ strong {
   text-align: center; }
 
 nav.animated {
-  background: #1A44A5; }
+  background: #102551; }
+  nav.animated .logo {
+    width: 56px; }
 
 nav .dropdown-menu-right {
   right: 0;
@@ -6251,6 +6253,14 @@ nav .dropdown-menu-right {
   height: 56px;
   width: 100%;
   display: none; }
+
+.logo {
+  position: absolute;
+  left: 1rem;
+  width: 100px;
+  background: #102551;
+  z-index: 10;
+  top: 0; }
 
 .navbar {
   z-index: 10;
@@ -6288,6 +6298,44 @@ nav .dropdown-menu-right {
   .navbar-nav.navbar-right a {
     float: left; }
 
+/* Commit for Github */
+.container.admin {
+  height: calc(100% - 400px);
+  font-family: arial;
+  padding-top: 5rem; }
+  .container.admin h3 {
+    margin-bottom: 2rem; }
+  .container.admin input {
+    border-radius: 3px; }
+  .container.admin .image-upload {
+    position: relative; }
+    .container.admin .image-upload input {
+      width: 80%; }
+    .container.admin .image-upload .preview-image {
+      display: none; }
+    .container.admin .image-upload .fa-check-circle {
+      position: absolute;
+      right: 0;
+      top: 13px;
+      color: green; }
+
+.alerts {
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 40; }
+
+.alerts .alert.alert-success {
+  color: #1f1f1f;
+  background-color: #E5DFDF;
+  border: none;
+  border-radius: inherit; }
+
+.alerts .alert .close {
+  color: #E5DFDF;
+  text-shdow: none; }
+
 .btn {
   background: #d7ab6d;
   color: white; }
@@ -6299,6 +6347,9 @@ a {
 
 .preview-image {
   max-width: 300px; }
+
+main.login {
+  height: calc(100% - 363px); }
 
 section {
   padding: 2rem;
@@ -6440,12 +6491,16 @@ h1 {
   .main {
     padding: 0; } }
 
+.kb img {
+  width: 50px;
+  fill: #E5DFDF; }
+
 .home {
   padding: 0;
   position: relative;
   overflow: hidden;
   height: calc(100% - 50px);
-  background: #898989; }
+  background: #1f1f1f; }
   .home h1 {
     display: none; }
   .home h2 {

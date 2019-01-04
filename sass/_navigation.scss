@@ -1,6 +1,9 @@
 nav {
     &.animated {
-        background: $blue;
+        background: $navy;
+        .logo {
+            width: 56px;
+        }
     }
     .dropdown-menu-right {
         right: 0; 
@@ -13,6 +16,15 @@ nav {
     height: 56px;
     width: 100%;
     display: none;
+}
+
+.logo {
+    position: absolute;
+    left: 1rem;
+    width: 100px;
+    background: $navy;
+    z-index: 10;
+    top: 0;
 }
 
 .navbar {
