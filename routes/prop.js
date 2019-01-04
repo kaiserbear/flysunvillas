@@ -15,7 +15,7 @@ function getAllPropertys(string, res) {
             console.log(err);
         } else {
             res.render(string, {
-                propertys: allpropertys
+                props: allpropertys
             });
         }
     });

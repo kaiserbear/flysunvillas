@@ -1,0 +1,67 @@
+nav {
+    &.animated {
+        background: $blue;
+    }
+    .dropdown-menu-right {
+        right: 0; 
+        left: auto;
+    }
+}
+
+
+#fake-nav {
+    height: 56px;
+    width: 100%;
+    display: none;
+}
+
+.navbar {
+    z-index: 10;
+    background: transparent;
+    position: absolute;
+    width: 100%;
+    .container {
+        position: relative;
+    }
+    &.sticky {
+        position: fixed;
+        top: 0;
+        width: 100%
+    }
+    .country {
+        position: absolute;
+        left: 7%;
+        top: 15px;
+        ul {
+            li {
+                display: inline-block;
+                margin-right: 1rem;
+            }
+        }
+    }
+    .navbar-brand {
+        background: $blue;
+        position: absolute;
+        top: 0;
+        img {
+            width: 100px;
+        }
+    }
+}
+
+.navbar-nav {
+    margin-left: auto;
+    &.navbar-right {
+        li {
+            padding: 10px 0;
+        }
+        img {
+            max-width: 50px;
+            border-radius: 100%;
+            float: left;
+        }
+        a {
+            float:left;
+        }
+    }
+}

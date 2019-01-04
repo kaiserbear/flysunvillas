@@ -58,10 +58,10 @@ app.use(function(req, res, next) {
 });
 
 var indexRoutes = require("./routes/index");
-var properties = require("./routes/admin");
+var properties = require("./routes/prop");
 
 app.use("/", indexRoutes);
-app.use("/admin/", properties);
+app.use("/properties/", properties);
 
 
 app.listen(port, ip, function() {
