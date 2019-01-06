@@ -27,7 +27,7 @@ var PropSchema = new mongoose.Schema({
         type: String
     }],
 
-    decDesc: [{
+    devDesc: [{
         type: String
     }],
 
@@ -68,7 +68,7 @@ var PropSchema = new mongoose.Schema({
       type: String
     },
 
-   price: {
+    price: {
       type: String
     },
 

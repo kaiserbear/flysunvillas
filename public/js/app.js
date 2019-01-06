@@ -38,7 +38,7 @@ window.onscroll = function() {
 
 
 function init() {
-    // fadeOutFAlert();
+    fadeOutFAlert();
     navScroll();
 }
 

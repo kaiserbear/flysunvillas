@@ -5,123 +5,86 @@ const router = express.Router();
 const property = require("../models/properties");
 const middleware = require("../middleware");
 const passport = require("passport");
+const user = require("../models/user");
+const pjson = require('../package.json');
+
+var slugify = require("slugify");
 
 
-const S3_BUCKET = process.env.S3_BUCKET;
+router.get("/new", middleware.isLoggedIn, function(req, res) {
+    property.find({}).sort({name: 1}).exec(function(err, items) {
 
-function getAllPropertys(string, res) {
-    property.find({}, function(err, allpropertys) {
         if (err) {
             console.log(err);
         } else {
-            res.render(string, {
-                props: allpropertys
+            res.render("properties/new", {
+                props: items,
+                version: pjson.version,
+                user: req.user,
+                admin: true
             });
         }
     });
-}
-
+});
 
 //CREATE - add new property to DB
-router.post("/", middleware.isLoggedIn, function(req, res) {
-    var title = req.body.title;
-    var desc = req.body.description;
-    var author = {
+router.post("/new", middleware.isLoggedIn, function(req, res) {
+     // get data from form and add to portfolios array
+    const author = {
         id: req.user._id,
-        username: req.user.username
-    }
-    req.body.image1 = req.body.image1.replace(/[/\\?%*:|"<>^ ]/g, '-');
-
-    var image1 = req.body.image1;
-
-    var newproperty = {
-        title: title,
-        image1: image1,
-        image2: image2,
-        image3: image3,
-        description: desc,
-        author: author
+        username: req.user.username,
+        role: req.user.role
     }
 
-    // Create a new property and save to DB
-    property.create(newproperty, function(err, newlyCreated) {
+    var convertedSection;
+    const convertedSlug = slugify(req.body.slug);
 
-        if (err) {
-            console.log(err);
-        } else {
-            req.flash("success", newproperty.title + " News Item Created");
-            res.redirect("/");
-        }
-    });
-});
+    var section = req.body.section;
 
-router.get("/new", middleware.isLoggedIn, function(req, res) {
-    getAllPropertys("admin/new", res);
-});
+    var sectionArr = [];
 
-
-router.get('/sign-s3', (req, res) => {
-
-    // S3 Bucket Config
-    const s3 = new aws.S3();
-    const fileName = req.query['file-name'];
-    const fileType = req.query['file-type'];
-    const s3Params = {
-        Bucket: S3_BUCKET,
-        Key: fileName,
-        Expires: 60,
-        ContentType: fileType,
-        ACL: 'public-read'
-    };
-    aws.config.region = 'eu-west-2';
-    s3.getSignedUrl('putObject', s3Params, (err, data) => {
-        if (err) {
-            console.log(err);
-            return res.end();
-        }
-        const returnData = {
-            signedRequest: data,
-            url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
-        };
-        res.write(JSON.stringify(returnData));
-        res.end();
-    });
-});
-
-
-// EDIT property ROUTE
-router.get("/:id/edit", middleware.checkOwnership, function(req, res) {
-    property.findById(req.params.id, function(err, foundProperty) {
-        res.render("admin/edit", {
-            property: foundProperty
+    if (typeof section === "object" && section !== null) {
+        section.forEach(function(item){
+            sectionArr.push(slugify(item));
         });
-    });
-});
+        convertedSection = sectionArr;
+    }
+    else {
+        convertedSection = slugify(section);
+    }
 
-// UPDATE property ROUTE
-router.put("/:id", middleware.checkOwnership, function(req, res) {
+    const newProp = {
+        title: req.body.title,
+        slug: convertedSlug,
+        location: req.body.location,
+        status: req.body.status,
+        mImage: req.body.mImage,
+        gImage: req.body.gImage,
+        devDesc: req.body.devDesc,
+        propDesc: req.body.decDesc,
+        bed: req.body.bed,
+        bath: req.body.bed,
+        hba: req.body.hba,
+        bsmnt: req.body.bsmnt,
+        ter: req.body.ter,
+        swim: req.body.swim,
+        total: req.body.total,
+        plot: req.body.plot,
+        price: req.body.price,
+        author: author,
+        date : new Date()
+    }
 
-    // find and update the correct property
-    req.body.property.image1 = req.body.property.image1.replace(/[/\\?%*:|"<>^ ]/g, '-');
-
-    property.findByIdAndUpdate(req.params.id, req.body.property, function(err, updatedproperty) {
+    // Create a new Property and save to DB
+    pages.create(newProp, function(err, newProp) {
         if (err) {
-            res.redirect("/admin");
+            console.log(err);
         } else {
-            res.redirect("/admin/" + req.params.id);
+            req.flash("success", newProp.name + " Property Created");
+            res.redirect('/' + newProp.slug);
         }
     });
 });
 
-// DESTROY property ROUTE
-router.delete("/:id", middleware.checkOwnership, function(req, res) {
-    property.findByIdAndRemove(req.params.id, function(err) {
-        if (err) {
-            res.redirect("/admin");
-        } else {
-            res.redirect("/admin");
-        }
-    });
-});
 
 module.exports = router;

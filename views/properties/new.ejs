@@ -1,7 +1,6 @@
 <% include ../partials/header %>
 <% include ../partials/alerts %>
 <% include ../partials/nav %>
-<% include ../partials/side-nav %>
 
 <main id="admin" class="main-content-container">
 
@@ -11,12 +10,13 @@
         <form id="page" action="/pages/new" method="POST" data-gramm_editor="false">
             
             <div class="col-sm-12 col-md-8 offset-md-2">
-                <h3>Create A New Page</h3>
+                <h3>Create A New Property</h3>
+                
                 <div class="row">
                     <div class="col-5">
                         <div class="form-group">
                             <label>Title</label>
-                            <input class="form-control" type="text" name="name" placeholder="Example of a title" required>
+                            <input class="form-control" type="text" name="title" placeholder="Example of a title" required>
                         </div>
                     </div>
                     <div class="col-7">
@@ -28,25 +28,71 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-7">
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input class="form-control" type="text" name="location" placeholder="e.g. Alicante, Spain" required>
+                            <!-- hidden input for  -->
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <div class="form--input__url">
+                                <select class="form-control" type="text" name="status" required>
+                                    <option value="new" default>New</option>
+                                    <option value="resale">Re-Sale</option>
+                                    <option value="sold">Sold</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="image-upload" class="form-group">
+                            <label>Main Property</label>
+                            <input type="file" class="form-control" accept=".jpg,.png" class="file-input" name="mImage" placeholder="Upload Image">
+                            <progress class="progress" value="0"></progress>
+                            <img class="previewImage" src="" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="image-upload" class="form-group">
+                            <label>Gallery Images</label>
+                            <div class="eachImage">
+                                <input type="file" class="form-control" accept=".jpg,.png" class="file-input" name="gImage" placeholder="Upload Image">
+                                <progress class="progress" value="0"></progress>
+                                <img class="previewImage" src="" />
+                            </div>
+                            <div class="eachImage">
+                                <input type="file" class="form-control" accept=".jpg,.png" class="file-input" name="gImage" placeholder="Upload Image">
+                                <progress class="progress" value="0"></progress>
+                                <img class="previewImage" src="" />
+                            </div>
+                            <div class="eachImage">
+                                <input type="file" class="form-control" accept=".jpg,.png" class="file-input" name="gImage" placeholder="Upload Image">
+                                <progress class="progress" value="0"></progress>
+                                <img class="previewImage" src="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
                             <label>Description</label>
                             <textarea class="form-control" type="text" name="description" placeholder="Describe this page in approx 100 characters" required></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label>Page Category</label>
-                            <div class="form--input__url">
-                                <select class="form-control" type="text" name="category"  required>
-                                    <% allCategories.forEach(function(category){ %>
-                                        <option value="<%= category.slug %>"><%= category.name %></option>
-                                    <% }); %>
-                                </select>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -131,6 +177,7 @@
                     </div>
                 </div>
 
+
                 <!-- Empty Added Section // Probably bettter to add this section via AJAX or another method -->
                 <div id="newSctn" class="to-be-sorted hide">
                     <div id="toggleReplace" class="section-handle" data-toggle="collapse" data-target="#section-REPLACE" data-sect="REPLACE">
@@ -210,7 +257,7 @@
                             <div class="col-8 offset-2">
                                 <div class="col">
                                     <button type="submit" id="formSbmt" class="btn pull-right btn-primary">Create page</button>
-                                    <button onclick="window.location='http://your.com';return false;" class="btn btn-primary-outline">Cancel</button>
+                                    <button onclick="window.location='/';return false;" class="btn btn-primary-outline">Cancel</button>
                                 </div>
                             </div>
                         </div>

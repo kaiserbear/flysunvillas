@@ -1,31 +1,35 @@
 
 /* Commit for Github */
+.admin, .login, .error {
+	background: $cream;
+	min-height: calc(100% - 400px);
+	padding: 5rem 0;
+	
+	// h3 {
+	// 	margin-bottom: 2rem;
+	// }
 
-.container {
-	&.admin {
-		height: calc(100% - 400px);
-		font-family: arial;
-		padding-top: 5rem;
-		h3 {
-			margin-bottom: 2rem;
-		}
-		input {
-			border-radius: 3px;
-		}
-		.image-upload {
-			position: relative;
-			input {
-				width: 80%;
-			}
-			.preview-image {
-				display: none;
-			}
-			.fa-check-circle {
-				position: absolute;
-			    right: 0;
-			    top: 13px;
-			    color: green;
-			}
-		}
+	// input {
+	// 	border-radius: 3px;
+	// }
+	
+	.error--logo {
+	    display: flex;
+    	margin: 0 auto;
+    	width: 400px;
 	}
+}
+
+
+progress {
+	width: 100%;
+	display: none;
+	color: $navy;
+	// border: $navy;
+}
+
+main{
+    &.login {
+        height: calc(100% - 363px);
+    }
 }

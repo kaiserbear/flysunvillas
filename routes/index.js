@@ -17,6 +17,7 @@ const bcrypt = require('bcrypt-nodejs');
 const xoauth2 = require('xoauth2');
 const prop = require("../models/properties");
 
+const S3_BUCKET = process.env.S3_BUCKET;
 
 // Environment
 const host = process.env.HOST;
@@ -37,6 +38,7 @@ function getAllPropertys(string, res) {
        }
     });
 }
+
 
 
 router.get("/", function(req, res) {
@@ -178,12 +180,13 @@ router.post('/forgot', function(req, res, next) {
             });
             var mailOptions = {
                 to: user.username,
-                from: 'hello@kaiserbear.co.uk',
-                subject: 'KEX: Password Reset.',
+                from: 'info@flysunvillas.co.uk',
+                subject: 'FlySunVillas: Password Reset.',
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                     'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
                     'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                    'If you did not request this, please ignore this email and your password will remain unchanged.\n\n\n' +
+                    'Fly Sun Villas Team.'
             };
             smtpTransport.sendMail(mailOptions, function(err) {
                 if (err) {
@@ -267,8 +270,8 @@ router.post('/reset/:token', function(req, res) {
             });
             var mailOptions = {
                 to: user.username,
-                from: 'passwordreset@demo.com',
-                subject: 'KEX: your password has been changed.',
+                from: 'info@flysunvillas.co.uk',
+                subject: 'FlySunVillas: your password has been changed.',
                 text: 'Hello,\n\n' +
                     'This is a confirmation that the password for your account ' + user.username + ' has just been changed.\n'
             };
@@ -316,6 +319,35 @@ router.get('/get_bucket_list', middleware.isLoggedIn, (req, res) => {
         res.send(data.Contents);
     });
 });
+
+router.get('/sign-s3', (req, res) => {
+
+    // S3 Bucket Config
+    const s3 = new aws.S3();
+    const fileName = req.query['file-name'];
+    const fileType = req.query['file-type'];
+    const s3Params = {
+        Bucket: S3_BUCKET,
+        Key: fileName,
+        Expires: 60,
+        ContentType: fileType,
+        ACL: 'public-read'
+    };
+    aws.config.region = 'eu-west-2';
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+        if (err) {
+            console.log(err);
+            return res.end();
+        }
+        const returnData = {
+            signedRequest: data,
+            url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+        };
+        res.write(JSON.stringify(returnData));
+        res.end();
+    });
+});
+
 
 
 module.exports = router;

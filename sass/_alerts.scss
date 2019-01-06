@@ -11,15 +11,15 @@
 .alerts {
     .alert {
         &.alert-success {
-            color: $black;
-            background-color: $white;
+            color: $cream;
+            background-color: $navy;
             border: none;
             border-radius: inherit;
         }
 
         .close {
-            color: $white;
-            text-shdow: none;
+            color: $cream;
+            text-shadow: none;
         }
     }
 }

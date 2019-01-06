@@ -92,7 +92,8 @@ app.use(function(error, req, res, next) {
   // res.json({ message: error.message });
   res.render("error",{
       message: error.message,
-      admin: false
+      admin: false,
+      user: ''
   });
 });
 
