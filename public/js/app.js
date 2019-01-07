@@ -30,6 +30,30 @@ function fadeOutFAlert() {
 
 }
 
+function toggleMenu() {
+    var hamburgerMenu = document.getElementById("fsv--menu__button");
+    if (hamburgerMenu) {
+        hamburgerMenu.onclick = function(e) {
+
+            if (primaryNav.classList.contains('active')) {
+                // contentEl.classList.toggle('active');
+                primaryNav.classList.toggle('active');
+
+            } else {
+                // contentEl.classList.toggle('active');
+                setTimeout(function() {
+                    primaryNav.classList.toggle('active');
+                }, 400);
+
+            }
+
+            hamburgerMenu.classList.toggle("open");
+
+        }
+    }
+
+}
+
 
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {
@@ -40,6 +64,7 @@ window.onscroll = function() {
 function init() {
     fadeOutFAlert();
     navScroll();
+    toggleMenu();
 }
 
 init();

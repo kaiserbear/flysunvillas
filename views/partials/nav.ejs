@@ -1,12 +1,24 @@
     <header>
         <div id="fake-nav"></div>
-        <nav id="navbar" class="navbar navbar-expand-lg">    
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-             <a href="/" class="logo">
+    
+        <nav id="navbar" class="fsv--nav">    
+            
+            <% if (user) { %>
+
+                <button id="fsv--menu__button" class="fsv--menu__button navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+
+            <% } %>
+
+            <a href="/" class="logo">
                 <img src="/img/fsv-logo.svg" alt="Fly Sun Villas" />
             </a>
+
+
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                         <li class="nav-item">

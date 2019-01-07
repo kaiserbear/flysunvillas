@@ -15,6 +15,12 @@ a {
 }
 
 section {
+    &:first-of-type {
+        margin-top: 58px;
+    }
+}
+
+section {
     padding: 2rem;
     color: #272727;
     position: relative;
