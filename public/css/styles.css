@@ -6392,6 +6392,9 @@ nav .dropdown-menu-right {
     margin: 0 auto;
     width: 400px; }
 
+.image-upload .eachImage:last-child {
+  display: none; }
+
 progress {
   width: 100%;
   display: none;

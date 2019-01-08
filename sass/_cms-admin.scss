@@ -1,34 +1,41 @@
-
 /* Commit for Github */
 .admin, .login, .error {
-	background: $cream;
-	min-height: calc(100% - 400px);
-	padding: 5rem 0;
-	
-	// h3 {
-	// 	margin-bottom: 2rem;
-	// }
+    background: $cream;
+    min-height: calc(100% - 400px);
+    padding: 5rem 0;
 
-	// input {
-	// 	border-radius: 3px;
-	// }
-	
-	.error--logo {
-	    display: flex;
-    	margin: 0 auto;
-    	width: 400px;
-	}
+    // h3 {
+    // 	margin-bottom: 2rem;
+    // }
+
+    // input {
+    // 	border-radius: 3px;
+    // }
+
+    .error--logo {
+        display: flex;
+        margin: 0 auto;
+        width: 400px;
+    }
 }
 
+.image-upload {
+    .eachImage {
+        &:last-child {
+            display: none;
+        }
+    }
+}
 
 progress {
-	width: 100%;
-	display: none;
-	color: $navy;
-	// border: $navy;
+    width: 100%;
+    display: none;
+    color: $navy;
+
+    // border: $navy;
 }
 
-main{
+main {
     &.login {
         height: calc(100% - 363px);
     }

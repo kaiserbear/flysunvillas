@@ -58,34 +58,34 @@
                     <div class="col-12">
                         <div class="image-upload" class="form-group">
                             <label>Main Property Image</label>
-                            <input type="file" class="form-control" accept=".jpg,.png" class="file-input" name="mImage" placeholder="Upload Image">
-                            <progress class="progress" value="0"></progress>
+                            <input type="file" class="form-control file-input" accept=".jpg,.png" class="" name="gImage" placeholder="Upload Image">
                             <img class="previewImage" src="" />
+                            <progress class="progress" value="0"></progress>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
-                        <div class="image-upload" class="form-group">
+                        <div id="GI-cont" class="image-upload" class="form-group">
                             <label>Gallery Images</label>
                             <div class="eachImage">
-                                <input type="file" class="form-control" accept=".jpg,.png" class="file-input" name="gImage" placeholder="Upload Image">
-                                <progress class="progress" value="0"></progress>
+                                <input type="file" class="form-control file-input" accept=".jpg,.png" class="" name="gImage" placeholder="Upload Image">
                                 <img class="previewImage" src="" />
+                                <progress class="progress" value="0"></progress>
                             </div>
                             <div class="eachImage">
-                                <input type="file" class="form-control" accept=".jpg,.png" class="file-input" name="gImage" placeholder="Upload Image">
-                                <progress class="progress" value="0"></progress>
+                                <input type="file" class="form-control file-input" accept=".jpg,.png" class="" name="gImage" placeholder="Upload Image">
                                 <img class="previewImage" src="" />
-                            </div>
-                            <div class="eachImage">
-                                <input type="file" class="form-control" accept=".jpg,.png" class="file-input" name="gImage" placeholder="Upload Image">
                                 <progress class="progress" value="0"></progress>
-                                <img class="previewImage" src="" />
                             </div>
-                            <a href="#" id="addSctnBtn" class="btn btn-admin">Add new gallery image</a>
+                            <div id="GI-clone" class="eachImage">
+                                <input type="file" class="form-control file-input" accept=".jpg,.png" class="" name="gImage" placeholder="Upload Image">
+                                <img class="previewImage" src="" />
+                                <progress class="progress" value="0"></progress>
+                            </div>                            
                         </div>
+                        <a href="#" id="addGIBtn" class="btn btn-admin">Add new gallery image</a>
                     </div>
                 </div>
 

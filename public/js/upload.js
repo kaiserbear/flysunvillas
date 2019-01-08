@@ -1,37 +1,40 @@
 // Preview Image For Image Upload
 
-const upload = document.getElementsByClassName("image-upload");
-
-
-if (upload.length) {
-    // for (var i = 0; i < upload.length; i++) {
-    //     var eachUpload = upload[i];
-    //     var input = eachUpload.getElementsByClassName('form-control')[0];
-    //     var progress = eachUpload.getElementsByClassName('custom-progress')[0];
-    //     console.log('check');
-       
-    // }
-     // getImageUpload(upload);
-}
-
 function getImageUpload() {
-    const fileInput = upload;
-    if (fileInput.length) {
-        console.log(document.getElementsByClassName("file-input"));
-        document.getElementsByClassName("file-input").onchange = () => {
-            const files = document.getElementById('file-input').files;
+
+
+    const fileInput = document.getElementsByClassName("file-input");
+
+
+
+    for (var i = 0; i < fileInput.length; i++) {
+
+
+
+        fileInput[i].addEventListener('input', function (evt) {
+            const files = this.files;
             const file = files[0];
+
+            var previewImage = this.nextElementSibling;
+            var progressBar = this.nextSibling.nextSibling;
+
+
+            console.log(previewImage);
+            console.log(this.nextSibling);
+
             if (file == null) {
                 return alert('No file selected.');
                 previewImage.style.display = "none";
             }
 
             getSignedRequest(file);
-        };
+
+        });
     }
 }
 
-function getSignedRequest(file) {
+function getSignedRequest(file, progressBar, previewImage) {
+    
     const fileName = file.name.replace(/[/\\?%*:|"<>^ ]/g, '-');
     const xhr = new XMLHttpRequest();
 
@@ -50,27 +53,6 @@ function getSignedRequest(file) {
     xhr.send();
 }
 
-// Element.prototype.appendAfter = function (element) {
-//   element.parentNode.insertBefore(this, element.nextSibling);
-// },false;
-
-// function addNewImageUpload() {
-//     var addImageBtn = document.getElementsByClassName('add-image');
-//     if (addImageBtn) {
-//         for (var i = 0; i < addImageBtn.length; i++) {
-//             addImageBtn[i].addEventListener('click', function(e){
-//                 e.preventDefault();
-//                 var parent = this.parentNode;
-//                 var newImage = parent.cloneNode(true);
-//                 newImage.appendAfter(parent);
-//                 addNewImageUpload();
-//             }, false);
-//         }
-//     }
-
-// }
-
-// addNewImageUpload();
 
 function uploadFile(file, signedRequest, url) {
 
@@ -79,8 +61,7 @@ function uploadFile(file, signedRequest, url) {
     const previewImageNew = document.createElement("IMG");
     previewImageNew.id = "preview-image";
 
-    // Progress Bar
-    const progressBar = document.getElementById("progress");
+   
 
     // AJAX
     const xhr = new XMLHttpRequest();
