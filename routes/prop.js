@@ -33,25 +33,9 @@ router.post("/new", middleware.isLoggedIn, function(req, res) {
     const author = {
         id: req.user._id,
         username: req.user.username,
-        role: req.user.role
     }
 
-    var convertedSection;
     const convertedSlug = slugify(req.body.slug);
-
-    var section = req.body.section;
-
-    var sectionArr = [];
-
-    if (typeof section === "object" && section !== null) {
-        section.forEach(function(item){
-            sectionArr.push(slugify(item));
-        });
-        convertedSection = sectionArr;
-    }
-    else {
-        convertedSection = slugify(section);
-    }
 
     const newProp = {
         title: req.body.title,
@@ -61,7 +45,7 @@ router.post("/new", middleware.isLoggedIn, function(req, res) {
         mImage: req.body.mImage,
         gImage: req.body.gImage,
         devDesc: req.body.devDesc,
-        propDesc: req.body.decDesc,
+        propDesc: req.body.propDesc,
         bed: req.body.bed,
         bath: req.body.bed,
         hba: req.body.hba,
@@ -75,15 +59,17 @@ router.post("/new", middleware.isLoggedIn, function(req, res) {
         date : new Date()
     }
 
+    console.log(newProp);
+
     // Create a new Property and save to DB
-    pages.create(newProp, function(err, newProp) {
-        if (err) {
-            console.log(err);
-        } else {
-            req.flash("success", newProp.name + " Property Created");
-            res.redirect('/' + newProp.slug);
-        }
-    });
+    // pages.create(newProp, function(err, newProp) {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         req.flash("success", newProp.name + " Property Created");
+    //         res.redirect('/' + newProp.slug);
+    //     }
+    // });
 });
 
 

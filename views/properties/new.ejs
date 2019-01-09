@@ -7,7 +7,7 @@
 <section class="admin main">
     <div class="container">
         
-        <form id="page" action="/pages/new" method="POST" data-gramm_editor="false">
+        <form id="page" action="/properties/new" method="POST" data-gramm_editor="false">
             
             <div class="col-sm-12 col-md-8 offset-md-2">
                 <h3>Create A New Property</h3>
@@ -16,14 +16,14 @@
                     <div class="col-5">
                         <div class="form-group">
                             <label>Title</label>
-                            <input class="form-control" type="text" name="title" placeholder="Example of a title" required>
+                            <input class="form-control" type="text" name="title" placeholder="Example of a title" >
                         </div>
                     </div>
                     <div class="col-7">
                         <div class="form-group">
                             <label>URL</label>
                             <div class="form--input__url">
-                                <input id="domain-url" class="form-control" type="text" name="slug" placeholder="enter-a-nice-url" required />
+                                <input id="domain-url" class="form-control" type="text" name="slug" placeholder="enter-a-nice-url"  />
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                     <div class="col-7">
                         <div class="form-group">
                             <label>Location</label>
-                            <input class="form-control" type="text" name="location" placeholder="e.g. Alicante, Spain" required>
+                            <input class="form-control" type="text" name="location" placeholder="e.g. Alicante, Spain" >
                             <!-- hidden input for  -->
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         <div class="form-group">
                             <label>Status</label>
                             <div class="form--input__url">
-                                <select class="form-control" type="text" name="status" required>
+                                <select class="form-control" type="text" name="status" >
                                     <option value="new" default>New</option>
                                     <option value="resale">Re-Sale</option>
                                     <option value="sold">Sold</option>
@@ -53,17 +53,40 @@
 
                 <hr />
 
-
                 <div class="row">
                     <div class="col-12">
                         <div class="image-upload" class="form-group">
                             <label>Main Property Image</label>
-                            <input type="file" class="form-control file-input" accept=".jpg,.png" class="" name="gImage" placeholder="Upload Image">
+                            <input type="file" class="form-control file-input" accept=".jpg,.png" class="" name="mImage" placeholder="Upload Image">
                             <img class="previewImage" src="" />
                             <progress class="progress" value="0"></progress>
                         </div>
                     </div>
                 </div>
+
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Development Description</label>
+                            <textarea class="form-control" type="text" name="devDesc" placeholder="Describe the development in approx 100 words" ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Property Description</label>
+                            <textarea class="form-control" type="text" name="propDesc" placeholder="Describe this property in approx 100 words" ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr />
 
                 <div class="row">
                     <div class="col-12">
@@ -92,170 +115,84 @@
                     </div>
                 </div>
 
+                <hr />
+
                 <div class="row">
-                    <div class="col-12">
+
+                    <div class="col-4">
                         <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control" type="text" name="description" placeholder="Describe this page in approx 100 characters" required></textarea>
+                            <label>Beds</label>
+                            <input class="form-control" type="text" name="bed" placeholder="e.g. 3" >
                         </div>
                     </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Baths</label>
+                            <input class="form-control" type="text" name="bath" placeholder="e.g. 2" >
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>House Built Area</label>
+                            <input class="form-control" type="text" name="hba" placeholder="e.g. 3" >
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="row">
-                    <div class="col">
-                        <div id="sortable">
-                            <div class="to-be-sorted">
-                                
-                                <div class="section-handle" data-toggle="collapse" data-target="#section-0" data-sect="0">
-                                    <div class="grab"></div>
-                                    <span id="sectionTitle-0">Section Title</span>
-                                    <span class="sctnToggle"></span>
-                                </div>
 
-                                <section class="section">
-                                    <div id="section-0" class="collapse">
-                                        <div class="row">
-                                             <div class="col-12">
-                                                <div class="form-group">
-                                                    <label>Section Title</label>
-                                                    <div class="form--input__url">
-                                                        <input class="form-control section-title" type="text" name="section" data-title="sectionTitle-0" placeholder="Section Title" required />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                             <div class="col-12">
-                                                <div class="form-group">
-                                                    <label>WYSIWYG</label>
-                                                    <textarea class="form-control froala" type="text" name="content">
-                                                    </textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <div class="code-view">
-                                                        <h5>Hide</h5>
-                                                        <input type="hidden" class="hidden-hide-check" name="htmlHide" value="false" />
-                                                        <label class="switch">
-                                                            <input class="code-hide" class="hidden-hide-check" type="checkbox">
-                                                            <span class="slider round"></span>
-                                                        </label>
-                                                    </div>
-                                                    <label>HTML</label>
-                                                    <textarea id="html-cm-0" class="code-codemirror" data-type="html" class="form-control" type="text" name="html"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                 <div class="form-group">
-                                                    <div class="code-view">
-                                                        <h5>Hide</h5>
-                                                        <input type="hidden" class="hidden-hide-check" name="cssHide" value="false" />
-                                                        <label class="switch">
-                                                            <input class="code-hide" type="checkbox">
-                                                            <span class="slider round"></span>
-                                                        </label>
-                                                    </div>
-                                                    <label>SCSS</label>
-                                                    <textarea id="css-cm-0" class="code-codemirror" data-type="css" class="form-control" type="text" name="css"></textarea>
-                                                </div> 
-                                            </div>
-                                        </div>
-                                        <div class="section--manage">
-                                            <button class="btn btn-delete dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delete
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                                <p>Are you sure you want to remove this section?</p>
-                                                <a href="#" class="remove-btn">Confirm</a>
-                                                <span class="close-btn">Cancel</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Basement</label>
+                            <input class="form-control" type="text" name="bsmnt" placeholder="e.g. 3" >
                         </div>
-                        <a href="#" id="addSctnBtn" class="btn btn-admin">Add new section</a>
                     </div>
-                </div>
 
-
-                <!-- Empty Added Section // Probably bettter to add this section via AJAX or another method -->
-                <div id="newSctn" class="to-be-sorted hide">
-                    <div id="toggleReplace" class="section-handle" data-toggle="collapse" data-target="#section-REPLACE" data-sect="REPLACE">
-                        <div class="grab"></div>
-                        <span id="sectionTitle-REPLACE">New Section</span>
-                        <span class="toggle-symbol"></span>
-                    </div>
-                    <section class="section">
-                        <div id="section-REPLACE" class="collapse">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label>Section Title</label>
-                                        <div class="form--input__url">
-                                            <input class="form-control section-title" data-title="sectionTitle-REPLACE" type="text" name="page[section]" value="" required />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label>WYSIWYG</label>
-                                        <textarea class="form-control newFroala" type="text" name="page[content]"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="code-view">
-                                            <h5>Hide</h5>
-                                            <input type="hidden" class="hidden-hide-check" name="page[htmlHide]" value="" />
-                                            <label class="switch">
-                                                <input class="code-hide" type="checkbox">
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </div>
-                                        <label>HTML</label>
-                                        <textarea id="html-cm-REPLACE" class="code-codemirror" data-type="html" class="form-control" type="text" name="page[html]"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="code-view">
-                                            <h5>Hide</h5>
-                                            <input type="hidden" class="hidden-hide-check" name="page[cssHide]" value="" />
-                                            <label class="switch">
-                                                <input class="code-hide" type="checkbox">
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </div>
-                                        <label>SCSS</label>
-                                        <textarea id="css-cm-REPLACE" class="code-codemirror" data-type="css" class="form-control" type="text" name="page[css]"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="section--manage">
-                                <button class="btn btn-delete dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Delete
-                                </button>
-                                <div class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <p>Are you sure you want to remove this section?</p>
-                                    <a href="#" class="remove-btn">Confirm</a>
-                                    <span class="close-btn">Cancel</span>
-                                </div>
-                            </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Terraces</label>
+                            <input class="form-control" type="text" name="ter" placeholder="e.g. 1" >
                         </div>
-                    </section>
-                </div>
+                    </div>
 
-                 <div class="admin-tools">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Swimming Pool</label>
+                            <input class="form-control" type="text" name="swim" placeholder="Yes/No" >
+                        </div>
+                    </div>
+
+                </div>  
+
+                <div class="row">
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Total</label>
+                            <input class="form-control" type="text" name="total" placeholder="e.g. xxxm2" >
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Plot Area</label>
+                            <input class="form-control" type="text" name="plot" placeholder="e.g. 120m2" >
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input class="form-control" type="text" name="price" placeholder="e.g. $$$" >
+                        </div>
+                    </div>
+
+                </div>  
+
+                <div class="admin-tools">
                     <div class="container">
                         <div class="row">
                             <div class="col-8 offset-2">

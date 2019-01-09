@@ -1,9 +1,13 @@
 /* Commit for Github */
 .admin, .login, .error {
-    background: $cream;
+    // background: $cream;
     min-height: calc(100% - 400px);
     padding: 5rem 0;
-
+    section {
+        &:first-of-type {
+            margin-top: 0;
+        }
+    }
     // h3 {
     // 	margin-bottom: 2rem;
     // }

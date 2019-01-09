@@ -49,7 +49,6 @@ function getSignedRequest(file, progressBar, previewImage) {
 
 function uploadFile(file, signedRequest, url, progressBar, previewImage) {
 
-
     // AJAX
     const xhr = new XMLHttpRequest();
 
