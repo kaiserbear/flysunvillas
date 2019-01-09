@@ -2,33 +2,26 @@
 
 function getImageUpload() {
 
-
     const fileInput = document.getElementsByClassName("file-input");
 
-
-
     for (var i = 0; i < fileInput.length; i++) {
-
-
 
         fileInput[i].addEventListener('input', function (evt) {
             const files = this.files;
             const file = files[0];
 
             var previewImage = this.nextElementSibling;
-            var progressBar = this.nextSibling.nextSibling;
-
+            var progressBar = previewImage.nextElementSibling;
 
             console.log(previewImage);
-            console.log(this.nextSibling);
+            console.log(progressBar);
 
             if (file == null) {
                 return alert('No file selected.');
                 previewImage.style.display = "none";
             }
 
-            getSignedRequest(file);
-
+            getSignedRequest(file, progressBar, previewImage);
         });
     }
 }
@@ -44,7 +37,7 @@ function getSignedRequest(file, progressBar, previewImage) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 const response = JSON.parse(xhr.responseText);
-                uploadFile(file, response.signedRequest, response.url);
+                uploadFile(file, response.signedRequest, response.url, progressBar, previewImage);
             } else {
                 alert('Could not get signed URL.');
             }
@@ -54,14 +47,8 @@ function getSignedRequest(file, progressBar, previewImage) {
 }
 
 
-function uploadFile(file, signedRequest, url) {
+function uploadFile(file, signedRequest, url, progressBar, previewImage) {
 
-    // Container
-    const el = document.getElementById("image-upload");
-    const previewImageNew = document.createElement("IMG");
-    previewImageNew.id = "preview-image";
-
-   
 
     // AJAX
     const xhr = new XMLHttpRequest();
@@ -88,12 +75,6 @@ function uploadFile(file, signedRequest, url) {
                 if (previewImage) {
                     console.log('check 1');
                     previewImage.src = url;
-                }
-                else {
-                    console.log('check 2');
-                    el.removeChild(el.lastChild);
-                    previewImageNew.src = url;
-                    el.appendChild(previewImageNew);
                 }
             }
             else {

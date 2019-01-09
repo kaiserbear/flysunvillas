@@ -42,33 +42,28 @@ function addGI() {
         var clone = cloneItem.cloneNode(true);
         clone.removeAttribute('id');
         GIcont.appendChild(clone);
-        // getImageUpload();
-        // prepClone();
-        // Scan again for new delete buttons
-        // removeSection();
-        // Scan again for new section titles
-        // updateSectionTitle()
+        removeGI();
+        getImageUpload();
     }
 
 }
 
 function removeGI() {
 
-    for (var i = 0; i < toBeSorted.length; i++) {
-        
-        var removeBtn = toBeSorted[i].querySelector('.remove-btn');
-        removeBtn.addEventListener("click", function(e) {
+    var dltBtn = document.getElementsByClassName("dlt-gi");
+
+    for (var i = 0; i < dltBtn.length; i++) {
+        dltBtn[i].addEventListener("click", function(e) {
             e.preventDefault();
-            var thisSection = this.parentNode.parentNode.parentNode.parentNode.parentNode;
+            var thisSection = this.parentNode;
             thisSection.remove();
-            checkHiddenCM();
         }, false);
     }
 }
 
 function init() {
     addGI();
-    // removeGI();
+    removeGI();
 }
 
 init();
