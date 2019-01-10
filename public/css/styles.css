@@ -6183,7 +6183,7 @@ html, body {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background: #E5DFDF; }
+  background: #e6e6e6; }
   body .modal-backdrop {
     z-index: 20; }
 
@@ -6240,6 +6240,13 @@ strong {
 .center {
   text-align: center; }
 
+.btn {
+  color: white !important; }
+  .btn.btn-delete, .btn.dlt-gi {
+    color: white;
+    background-color: #B70034;
+    border-color: #B70034; }
+
 .form-control {
   display: block;
   width: 100%;
@@ -6273,7 +6280,8 @@ nav .dropdown-menu-right {
 
 .logo {
   height: 58px;
-  width: 58px; }
+  width: 58px;
+  margin: 0 auto; }
 
 .navbar {
   z-index: 10;
@@ -6315,7 +6323,7 @@ nav .dropdown-menu-right {
   position: fixed;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 30;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -6325,6 +6333,8 @@ nav .dropdown-menu-right {
   overflow: scroll;
   min-height: 58px;
   padding: 0; }
+  .fsv--nav .navbar-collapse {
+    padding: 1rem; }
   .fsv--nav .fsv--menu__button {
     width: 30px;
     height: 22px;
@@ -6338,8 +6348,9 @@ nav .dropdown-menu-right {
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
     cursor: pointer;
-    right: 1rem;
-    position: absolute; }
+    left: 1rem;
+    position: absolute;
+    top: 1rem; }
     .fsv--nav .fsv--menu__button span {
       display: block;
       position: absolute;
@@ -6382,18 +6393,93 @@ nav .dropdown-menu-right {
       width: 0%;
       left: 50%; }
 
+footer {
+  color: white;
+  background: #102551;
+  position: relative;
+  z-index: 20; }
+  footer h4 {
+    color: #e6e6e6; }
+  footer section a {
+    color: #e6e6e6; }
+  footer section ul {
+    list-style: none;
+    border-top: 1px solid grey;
+    padding: 2rem 0; }
+    footer section ul li {
+      margin-bottom: 0.5rem; }
+      footer section ul li a:hover {
+        color: #d7ab6d; }
+  footer .mail-chimp input[type="email"] {
+    border-radius: 5px 0 0 5px;
+    width: 83%;
+    display: inline-block;
+    margin: 0; }
+  footer .mail-chimp button {
+    background: #d7ab6d;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    display: inline-block;
+    padding: 1px 0.4rem;
+    border-bottom: 1px solid #d7ab6d;
+    width: 15%;
+    position: relative;
+    left: -5px;
+    cursor: pointer; }
+  footer .mail-chimp .response {
+    color: grey;
+    font-size: 12px; }
+
+.navbar-nav {
+  margin-left: auto; }
+  .navbar-nav.navbar-right li {
+    padding: 10px 0; }
+  .navbar-nav.navbar-right img {
+    max-width: 50px;
+    border-radius: 100%;
+    float: left; }
+  .navbar-nav.navbar-right a {
+    float: left; }
+  .navbar-nav .nav-link {
+    color: white; }
+  .navbar-nav .nav-item {
+    margin-right: 1rem; }
+
 /* Commit for Github */
-.admin, .login, .error {
-  background: #E2DFC5;
+.login, .error {
   min-height: calc(100% - 400px);
-  padding: 5rem 0; }
-  .admin .error--logo, .login .error--logo, .error .error--logo {
+  padding: 3rem 0; }
+  .login section:first-of-type, .error section:first-of-type {
+    margin-top: 0; }
+  .login .error--logo, .error .error--logo {
     display: flex;
     margin: 0 auto;
     width: 400px; }
+  .login .login-form, .error .login-form {
+    background: white;
+    padding: 2rem 1rem; }
 
-.image-upload .eachImage:last-child {
-  display: none; }
+.admin {
+  padding: 3rem 0; }
+  .admin hr {
+    border: 1px solid #102551;
+    margin: 2rem 0; }
+  .admin .admin-tools {
+    margin: 3rem 0; }
+
+.eachImage img {
+  max-height: 100px;
+  width: auto; }
+
+.image-upload {
+  margin: 0 0 2rem 0; }
+  .image-upload #GI-clone {
+    display: none; }
+  .image-upload img {
+    max-width: 100%;
+    margin: 1rem 0; }
 
 progress {
   width: 100%;
@@ -6425,25 +6511,59 @@ main.login {
   color: white; }
 
 a {
-  color: #1A44A5; }
-  a.logo {
-    position: absolute; }
+  color: #102551; }
 
 .preview-image {
   max-width: 300px; }
-
-section:first-of-type {
-  margin-top: 58px; }
 
 section {
   padding: 2rem;
   color: #272727;
   position: relative; }
+  section.light {
+    background: white; }
   section p, section li, section span, section textarea {
     font-weight: 300;
     line-height: 34px; }
   section b span {
     font-weight: bold; }
+
+.main-content-container .admin-tools {
+  position: absolute;
+  z-index: 5;
+  top: 10%; }
+
+.page--content a {
+  background: white;
+  padding: 0; }
+  .page--content a:hover {
+    text-decoration: none; }
+  .page--content a .desc {
+    padding: 0 1rem; }
+  .page--content a img {
+    width: 100%; }
+
+.prop--heading {
+  background-size: cover;
+  background-position: 0 50%;
+  height: 600px;
+  position: relative; }
+  .prop--heading div {
+    height: 100%;
+    position: relative; }
+  .prop--heading h2 {
+    position: absolute;
+    bottom: -40px;
+    color: white;
+    background: #102551;
+    padding: 1.5rem 2rem;
+    font-size: 4rem; }
+
+.dev--desc {
+  background: #f7f7f7; }
+
+.prop--desc {
+  background: white; }
 
 .custom-progress {
   width: 100%;
@@ -6451,60 +6571,6 @@ section {
 
 .center {
   margin: 0 auto; }
-
-.navbar-nav {
-  margin-left: auto; }
-  .navbar-nav.navbar-right li {
-    padding: 10px 0; }
-  .navbar-nav.navbar-right img {
-    max-width: 50px;
-    border-radius: 100%;
-    float: left; }
-  .navbar-nav.navbar-right a {
-    float: left; }
-  .navbar-nav .nav-link {
-    color: white; }
-  .navbar-nav .nav-item {
-    margin-right: 1rem; }
-
-footer {
-  color: #484848;
-  background: white;
-  position: relative;
-  z-index: 20; }
-  footer section {
-    color: 484848; }
-    footer section a {
-      color: 484848; }
-    footer section ul {
-      list-style: none;
-      border-top: 1px solid grey;
-      padding: 2rem 0; }
-      footer section ul li {
-        margin-bottom: 0.5rem; }
-        footer section ul li a:hover {
-          color: #d7ab6d; }
-  footer .mail-chimp input[type="email"] {
-    border-radius: 5px 0 0 5px;
-    width: 83%;
-    display: inline-block;
-    margin: 0; }
-  footer .mail-chimp button {
-    background: #d7ab6d;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    display: inline-block;
-    padding: 1px 0.4rem;
-    border-bottom: 1px solid #d7ab6d;
-    width: 15%;
-    position: relative;
-    left: -5px;
-    cursor: pointer; }
-  footer .mail-chimp .response {
-    color: grey;
-    font-size: 12px; }
 
 h1 {
   display: none; }
@@ -6514,8 +6580,29 @@ h1 {
   overflow-x: show; }
   .main h3 {
     color: #1A44A5; }
-  .main img {
-    width: 300px; }
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0rem 1rem;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  border: none; }
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 0 1rem; }
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1rem 1rem 1rem;
+  border-bottom-right-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+  border: none; }
 
 .btn-primary {
   background: #1A44A5;
@@ -6553,32 +6640,51 @@ h1 {
     color: grey;
     font-size: 12px; }
 
+.pull-right {
+  margin-left: auto; }
+
 @media (min-width: 992px) {
   .main {
     padding: 0; } }
 
 .kb img {
   width: 50px;
-  fill: #E5DFDF; }
+  fill: #e6e6e6; }
 
 .home {
   padding: 0;
   position: relative;
-  background: #1f1f1f; }
+  background-color: #1f1f1f;
+  padding: 3rem 0; }
+  .home:after {
+    content: "";
+    background: url(https://flysunvillas.s3.amazonaws.com/test-homepage.jpg);
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    background-size: cover; }
   .home h1 {
     display: none; }
   .home h2 {
     color: white;
-    font-size: 2rem;
+    font-size: 2.8rem;
     position: relative;
     z-index: 2;
-    margin-bottom: 1rem; }
-  .home button {
-    margin-bottom: 1rem; }
+    margin-bottom: 1rem;
+    margin-top: 0;
+    line-height: inherit; }
+  .home .btn {
+    margin-top: 2rem; }
   .home h3 {
     font-size: inherit;
     color: white;
-    margin-bottom: 1rem; }
+    margin: 0 0 1rem 0;
+    padding: 0; }
   .home img {
     width: 100%;
     margin: 0;
@@ -6601,9 +6707,10 @@ h1 {
 
 @media (min-width: 992px) {
   .home {
-    min-height: 100%; }
+    min-height: calc(100% - 20%); }
     .home h2 {
-      font-size: 5rem; }
+      font-size: 5rem;
+      margin-top: 15%; }
       .home h2 span {
         -webkit-text-stroke-width: 3px;
         -webkit-text-stroke-color: white;

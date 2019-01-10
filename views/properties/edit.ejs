@@ -2,44 +2,55 @@
 <% include ../partials/alerts %>
 <% include ../partials/nav %>
 
-<main id="admin" class="main-content-container">
+<main id="admin"">
 
 <section id="page--content" class="admin main">
     <div class="container">
-        <form id="page" action="/pages/<%= page.category %>/<%= page.slug %>?_method=PUT" method="POST">
+        <form id="page" action="/properties/<%= prop.slug %>?_method=PUT" method="POST" autocomplete="off" >
             <div class="col-sm-12 col-md-8 offset-md-2">
                 <!-- Page Version -->
-                <h3>Edit "<%= page.name %>"</h3>
+                <h3>Edit "<%= prop.title %>"</h3>
                 <div class="updated">
-                    <p>Last update by <%= page.author.username %> on <strong><%= page.updated.toLocaleString("en-GB") %></strong></p>
+                    <p>Last update by <%= prop.author.username %> on <strong><%= prop.updated.toLocaleString("en-GB") %></strong></p>
                 </div>
+                
                 <div class="row">
                     <div class="col-5">
                         <div class="form-group">
                             <label>Title</label>
-                            <input class="form-control" type="text" name="page[name]" value="<%= page.name %>" required>
+                            <input class="form-control" type="text" name="page[title]" value="<%= prop.title %>"  >
                         </div>
                     </div>
                     <div class="col-7">
                         <div class="form-group">
                             <label>URL</label>
                             <div class="form--input__url">
-                                <input id="domain-url" class="form-control" type="text" name="page[slug]" value="<%= page.slug %>" />
+                                <input id="domain-url" class="form-control" type="text" name="page[slug]" value="<%= prop.slug %>"  />
                             </div>
                         </div>
                     </div>
                 </div>
-                 <div class="row">
-                    <div class="col-12">
+
+                <div class="row">
+                    <div class="col-7">
                         <div class="form-group">
-                            <label>Page Category</label>
+                            <label>Location</label>
+                            <input class="form-control" type="text" name="page[location]" value="<%= prop.location %>" >
+                            <!-- hidden input for  -->
+                        </div>
+                    </div>
+
+                    <div class="col-5">
+                        <div class="form-group">
+                            <label>Status</label>
                             <div class="form--input__url">
-                                <select class="form-control" type="text" name="page[category]" required>
-                                    <% for (var i = 0; i < allCategories.length; i++) { %>
-                                        <% if (page.category === allCategories[i].slug) {%>
-                                            <option value="<%= allCategories[i].slug %>" selected><%= allCategories[i].name %></option>
+                                <select class="form-control" type="text" name="page[status]" >
+                                    <% var choices = ['new', 'resale', 'sold']; %>
+                                    <% for (var i = 0; i < choices.length; i++) { %>
+                                        <% if (choices[i] === prop.status) {%>
+                                            <option value="<%= prop.status %>" selected><%= prop.status %></option>
                                         <% } else { %>
-                                            <option value="<%= allCategories[i].slug %>"><%= allCategories[i].name %></option>
+                                            <option value="<%= choices[i] %>"><%= choices[i] %></option>
                                          <% } %>
                                     <% } %>
                                 </select>
@@ -48,191 +59,154 @@
                     </div>
                 </div>
 
+                <hr />
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="image-upload" class="form-group">
+                            <label>Main Property Image</label>
+                            <input type="hidden" value="<%= prop.mImage %>" name="page[mImage]" />
+                            <input type="file" class="form-control file-input" accept=".jpg,.png"  >
+                            <img class="previewImage" src="<%= prop.mImage %>" />
+                            <progress class="progress" value="0"></progress>
+                            <a href="#" id="changeMIBtn" class="btn btn-admin">Change this image</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr />
+
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control description" type="text" name="page[description]" placeholder="Describe this page in approx 100 characters" required><%= page.description %></textarea>
+                            <label>Development Description</label>
+                            <textarea class="form-control" type="text" name="page[devDesc]"><%= prop.devDesc %></textarea>
                         </div>
                     </div>
                 </div>
 
-                <!-- Sections -->
-               
                 <div class="row">
                     <div class="col-12">
-                        <label>Sections</label>
-                        <div id="sortable">
-                            <% for (var i = 0; i < page.section.length; i++) { %>                            
-                                <div class="to-be-sorted">
-
-                                    <div class="section-handle" data-toggle="collapse" data-target="#section-<%=[i]%>" data-sect="<%=[i]%>">
-                                        <div class="grab"></div>
-                                        <span id="sectionTitle-<%=[i]%>"><%= page.section[i]%></span>
-                                        <span class="toggle-symbol"></span>
-                                    </div>
-                                    
-                                    <section class="section">
-                                        <div id="section-<%=[i]%>" class="collapse">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label>Section Title</label>
-                                                        <div class="form--input__url">
-                                                            <input class="form-control section-title" type="text" name="page[section]" data-title="sectionTitle-<%=[i]%>" value="<%= page.section[i]%>" required />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label>WYSIWYG</label>
-                                                        <textarea class="form-control froala" type="text" name="page[content]"><%= page.content[i]%></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <div class="code-view">
-                                                            <h5>Hide</h5>
-                                                            <input type="hidden" class="hidden-hide-check" name="page[htmlHide]" value="<%= page.htmlHide[i]%>" />
-                                                            <label class="switch">
-                                                                <% if (page.htmlHide[i] === 'true') { %>
-                                                                <input class="code-hide" type="checkbox" checked>
-                                                                <% } else { %>
-                                                                <input class="code-hide" type="checkbox">
-                                                                <% } %>
-                                                                <span class="slider round"></span>
-                                                            </label>
-                                                        </div>
-                                                        <label>HTML</label>
-                                                        <textarea id="html-cm-<%=[i]%>" class="code-codemirror" data-type="html" class="form-control" type="text" name="page[html]"><%= page.html[i]%></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <div class="code-view">
-                                                            <h5>Hide</h5>
-                                                            <input type="hidden" class="hidden-hide-check" name="page[cssHide]" value="<%= page.cssHide[i]%>" />
-                                                            <label class="switch">
-                                                                <% if (page.cssHide[i] === 'true') { %>
-                                                                <input class="code-hide" type="checkbox" checked>
-                                                                <% } else { %>
-                                                                <input class="code-hide" type="checkbox">
-                                                                <% } %>
-                                                                <span class="slider round"></span>
-                                                            </label>
-                                                        </div>
-                                                        <label>SCSS</label>
-                                                        <textarea id="css-cm-<%=[i]%>" class="code-codemirror" data-type="css" class="form-control" type="text" name="page[css]"><%= page.css[i]%></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="section--manage">
-                                                <button class="btn btn-delete dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Delete
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                                    <p>Are you sure you want to remove this section?</p>
-                                                    <a href="#" class="remove-btn">Confirm</a>
-                                                    <span class="close-btn">Cancel</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            <% } %>
+                        <div class="form-group">
+                            <label>Property Description</label>
+                            <textarea class="form-control" type="text" name="page[propDesc]"><%= prop.propDesc %></textarea>
                         </div>
-                        <a href="#" id="addSctnBtn" class="btn btn-admin">Add new section</a>
                     </div>
                 </div>
 
-                <!-- Empty Added Section // Probably bettter to add this section via AJAX or another method -->
-                <div id="newSctn" class="to-be-sorted hide">
-                    <div id="toggleReplace" class="section-handle" data-toggle="collapse" data-target="#section-REPLACE" data-sect="REPLACE">
-                        <div class="grab"></div>
-                        <span id="sectionTitle-REPLACE">New Section</span>
-                        <span class="toggle-symbol"></span>
-                    </div>
-                    <section class="section">
-                        <div id="section-REPLACE" class="collapse">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label>Section Title</label>
-                                        <div class="form--input__url">
-                                            <input class="form-control section-title" data-title="sectionTitle-REPLACE" type="text" name="page[section]" value="" required />
-                                        </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-12">
+                        <div id="GI-cont" class="image-upload" class="form-group">
+                            <label>Gallery Images</label>
+                            <% if (prop.gImage) {%>
+                                <% for (var i = 0; i < prop.gImage.length; i++) { %>
+                                    <div class="eachImage">
+                                        <input type="hidden" value="<%= prop.gImage[i] %>" name="page[gImage]" />
+                                        <img class="previewImage" src="<%= prop.gImage[i] %>" />
+                                        <progress class="progress" value="0"></progress>
+                                        <a href="#" class="btn dlt-gi">Delete Image</a>
                                     </div>
-                                </div>
+                                <% } %>
+                            <% } %>
+                            <div id="GI-clone" class="eachImage">
+                                <input type="hidden" data-name="page[gImage]" />
+                                <input type="file" class="form-control file-input" accept=".jpg,.png" placeholder="Upload Image">
+                                <img class="previewImage" src="" />
+                                <progress class="progress" value="0"></progress>
+                                <a href="#" class="btn dlt-gi">Delete Image</a>
                             </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label>WYSIWYG</label>
-                                        <textarea class="form-control newFroala" type="text" name="page[content]"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="code-view">
-                                            <h5>Hide</h5>
-                                            <input type="hidden" class="hidden-hide-check" name="page[htmlHide]" value="" />
-                                            <label class="switch">
-                                                <input class="code-hide" type="checkbox">
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </div>
-                                        <label>HTML</label>
-                                        <textarea id="html-cm-REPLACE" class="code-codemirror" data-type="html" class="form-control" type="text" name="page[html]"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="code-view">
-                                            <h5>Hide</h5>
-                                            <input type="hidden" class="hidden-hide-check" name="page[cssHide]" value="" />
-                                            <label class="switch">
-                                                <input class="code-hide" type="checkbox">
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </div>
-                                        <label>SCSS</label>
-                                        <textarea id="css-cm-REPLACE" class="code-codemirror" data-type="css" class="form-control" type="text" name="page[css]"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="section--manage">
-                                <button class="btn btn-delete dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Delete
-                                </button>
-                                <div class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <p>Are you sure you want to remove this section?</p>
-                                    <a href="#" class="remove-btn">Confirm</a>
-                                    <span class="close-btn">Cancel</span>
-                                </div>
-                            </div>
+                             <a href="#" id="addGIBtn" class="btn btn-admin">Add new gallery image</a>                    
                         </div>
-                    </section>
+                       
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Beds</label>
+                            <input class="form-control" type="text" name="page[bed]" value="<%= prop.bed %>" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Baths</label>
+                            <input class="form-control" type="text" name="page[bath]" value="<%= prop.bath %>" >
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>House Built Area</label>
+                            <input class="form-control" type="text" name="page[hba]" value="<%= prop.hba %>" >
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Basement</label>
+                            <input class="form-control" type="text" name="page[bsmnt]" value="<%= prop.bsmnt %>" >
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Terraces</label>
+                            <input class="form-control" type="text" name="page[ter]" value="<%= prop.ter %>" >
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Swimming Pool</label>
+                            <input class="form-control" type="text" name="page[swim]" value="<%= prop.swim %>" >
+                        </div>
+                    </div>
+
+                </div>  
+
+                <div class="row">
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Total</label>
+                            <input class="form-control" type="text" name="page[total]" value="<%= prop.total %>" >
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Plot Area</label>
+                            <input class="form-control" type="text" name="page[plot]" value="<%= prop.plot %>" >
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input class="form-control" type="text" name="page[price]" value="<%= prop.price %>" >
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="admin-tools">
                     <div class="container">
                         <div class="row">
-                            <div class="col-8 offset-2">
-                                <div class="col">
-                                    <button id="formSbmt" class="btn btn-primary">Update "<%= page.name %>"</button>
-                                    <button id="goBack" class="btn btn-primary-outline">Cancel</button>
-                                </div>
-                            </div>
+                             <button id="formSbmt" class="btn btn-primary">Update "<%= prop.title %>"</button>
+                             <a id="goBack" class="btn btn-delete pull-right">Cancel</a>
                         </div>
                     </div>
                 </div>

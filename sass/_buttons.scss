@@ -1,0 +1,8 @@
+.btn {
+	&.btn-delete, &.dlt-gi {
+		color: white;
+		background-color: $red;
+		border-color: $red;
+	}
+	color: white!important;
+}

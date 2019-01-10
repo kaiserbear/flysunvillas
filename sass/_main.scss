@@ -4,10 +4,7 @@
 }
 
 a {
-    color: $blue;
-    &.logo {
-        position: absolute;
-    }
+    color: $navy;
 }
 
 .preview-image {
@@ -24,6 +21,9 @@ section {
     padding: 2rem;
     color: #272727;
     position: relative;
+    &.light {
+        background: white;
+    }
     p, li, span, textarea {
         font-weight: 300;
         line-height: 34px;
@@ -35,6 +35,60 @@ section {
     }
 }
 
+.main-content-container {
+    .admin-tools {
+        position: absolute;
+        z-index: 5;
+        top: 10%;
+    }
+}
+
+.page--content {
+    a {
+        background: white;
+        padding: 0;
+        &:hover {
+            text-decoration: none;    
+        }
+        
+        .desc {
+            padding: 0 1rem;
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.prop--heading {
+    background-size: cover;
+    background-position: 0 50%;
+    height: 600px;
+    position: relative;
+    div {
+        height: 100%;
+        position: relative;
+    }
+    h2 {
+        position: absolute;
+        bottom: -40px;
+        color: white;
+        background: $navy;
+        padding: 1.5rem 2rem;
+        font-size: 4rem;
+    }
+}
+
+.dev--desc {
+    background: #f7f7f7;
+}
+
+.prop--desc {
+    background: white;
+}
+
+
+
 .custom-progress {
     width: 100%;
     display: none;
@@ -44,98 +98,12 @@ section {
     margin: 0 auto
 }
 
-.navbar-nav {
-    margin-left: auto;
-    &.navbar-right {
-        li {
-            padding: 10px 0;
-        }
-        img {
-            max-width: 50px;
-            border-radius: 100%;
-            float: left;
-        }
-        a {
-            float:left;
-        }
-    }
-    .nav-link {
-        color: white;
-    }
-    .nav-item {
-        margin-right: 1rem;
-    }
-}
 
-footer {
-    color: #484848;
-    background: white;
-    position: relative;
-    z-index: 20;
 
-    section {
-        color: 484848;
-
-        a {
-            color: 484848;
-        }
-
-        ul {
-            list-style: none;
-            border-top: 1px solid grey;
-            padding: 2rem 0;
-
-            li {
-                margin-bottom: 0.5rem;
-                a {
-                    &:hover {
-                        color: $gold;
-                    }
-                }
-            }
-        }
-    }
-
-    .mail-chimp {
-        input {
-            &[type="email"] {
-                border-radius: 5px 0 0 5px;
-                width: 83%;
-                display: inline-block;
-                margin: 0;
-            }
-        }
-
-        button {
-            background: $gold;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            display: inline-block;
-            padding: 1px 0.4rem;
-            border-bottom: 1px solid $gold;
-            width: 15%;
-            position: relative;
-            left: -5px;
-            cursor: pointer;
-        }
-
-        .response {
-            color: grey;
-            font-size: 12px;
-        }
-    }
-}
-
-body {
-
-}
 
 h1 {
     display: none;
 }
-
 
 .main {
     height: 100%;
@@ -143,10 +111,32 @@ h1 {
     h3 {
         color: $blue;
     }
+}
 
-    img {
-        width: 300px;
-    }
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0rem 1rem;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    border: none;
+}
+
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 0 1rem;
+}
+
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 1rem 1rem 1rem;
+    border-bottom-right-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+    border: none;
 }
 
 .btn-primary {
@@ -194,6 +184,10 @@ h1 {
         color: grey;
         font-size: 12px;
     }
+}
+
+.pull-right {
+    margin-left: auto;
 }
 
 @include media-breakpoint-up(lg) {

@@ -1,31 +1,28 @@
 <% include ./partials/header %>
 <% include ./partials/alerts %>
-
 <main id="main" class="login">
-	
-<section class="login register">
-	<div class="container">
-	    <div class="row">
-        	<div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 login-form">
-
-			<form action="/register" method="post">
-                <div class="panel panel-default">
-                  <div class="panel-body">Only email addresses for 'Fly Sun Villas' will be accepted</div>
-                </div>
-			 	<div class="form-group">
-                    <label>Email</label>
-                   <!--  <input class="form-control" type="text" name="username" placeholder="first.lasth@flysunvillas.com" pattern=".+@flysunvillas.com" title="Must be a flysunvillas.com email address" required> -->
-                     <input class="form-control" type="text" name="username" placeholder="first.lasth@flysunvillas.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input class="form-control" type="password" name="password" placeholder="password" required>
-                </div>
-			    <button type="submit" class="btn btn-lg btn-primary btn-block">Sign Up</button>
-			</form>
-			</div>
-		</div>
-	</div>
-</section>
-
-<% include ./partials/footer %> 
+  
+  <section class="login register">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 login-form">
+          <form action="/register" method="post">
+            <div class="panel panel-default">
+              <div class="panel-body">Only email addresses for 'Fly Sun Villas' will be accepted</div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <!--  <input class="form-control" type="text" name="username" placeholder="first.lasth@flysunvillas.com" pattern=".+@flysunvillas.com" title="Must be a flysunvillas.com email address" required> -->
+              <input class="form-control" type="text" name="username" placeholder="first.lasth@flysunvillas.com" required>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input class="form-control" type="password" name="password" placeholder="password" required>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <% include ./partials/footer %>

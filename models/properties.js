@@ -23,17 +23,17 @@ var PropSchema = new mongoose.Schema({
         type: String
     },
 
-    gImages: [{
-        type: String
+    gImage:[{
+        type: mongoose.Schema.Types.Mixed
     }],
 
-    devDesc: [{
+    devDesc: {
         type: String
-    }],
+    },
 
-    propDesc:[{
+    propDesc:{
         type: String
-    }],
+    },
 
     bed: {
         type: String
