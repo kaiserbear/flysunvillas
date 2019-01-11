@@ -10,6 +10,8 @@ const pjson = require('../package.json');
 
 var slugify = require("slugify");
 
+const googleapi = process.env.GOOGLEAPI;
+
 //INDEX - show all jobs
 router.get("/", function(req, res) {
     property.find({}, function(err, items) {
@@ -20,7 +22,8 @@ router.get("/", function(req, res) {
                 props: items,
                 version: pjson.version,
                 user: req.user,
-                admin: false
+                admin: false,
+                googleapi: googleapi
             });
         }
     });
@@ -36,7 +39,8 @@ router.get("/new", middleware.isLoggedIn, function(req, res) {
                 props: items,
                 version: pjson.version,
                 user: req.user,
-                admin: true
+                admin: true,
+                googleapi: googleapi
             });
         }
     });
@@ -113,7 +117,8 @@ router.get("/:slug/edit", middleware.isLoggedIn, function(req, res) {
                             props: items,
                             version: pjson.version,
                             user: req.user,
-                            admin: true
+                            admin: true,
+                            googleapi: googleapi
                         });
                     });
                     
@@ -198,7 +203,8 @@ router.get("/:slug", function(req, res) {
                             props: allObjects,
                             version: pjson.version,
                             user: req.user,
-                            admin: false
+                            admin: false,
+                            googleapi: googleapi
                         });
                     }
                 }
