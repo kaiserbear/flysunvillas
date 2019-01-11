@@ -25,6 +25,7 @@ const port = process.env.PORT;
 const email_user = process.env.EMAIL_USER; // Nodemailer Email
 const email_password = process.env.EMAIL_PASSWORD; // Nodemailer
 
+const googleapi = process.env.GOOGLEAPI;
 
 
 function getAllPropertys(string, res) {
@@ -47,7 +48,8 @@ router.get("/", function(req, res) {
             version: pjson.version,
             admin: false,
             props: items,
-            user: req.user
+            user: req.user,
+            googleapi: googleapi
         });
 
     });
@@ -59,7 +61,8 @@ router.get("/googleMaps", function(req, res) {
     res.render("googleMap", {
         version: pjson.version,
         admin: false,
-        user: req.user
+        user: req.user,
+        googleapi: googleapi
     });
 });
 
@@ -70,7 +73,8 @@ router.get("/register", function(req, res) {
     res.render("register", {
         version: pjson.version,
         admin: false,
-        user: req.user
+        user: req.user,
+        googleapi: googleapi
     });
 });
 
@@ -111,7 +115,8 @@ router.get("/login", function(req, res) {
     res.render("login", {
         user: req.user,
         version: pjson.version,
-        admin: false
+        admin: false,
+        googleapi: googleapi
     });
 });
 
@@ -151,6 +156,7 @@ router.get("/forgot", function(req, res) {
         version: pjson.version,
         admin: false,
         user: req.user,
+        googleapi: googleapi
     });
 });
 
