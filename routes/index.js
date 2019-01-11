@@ -39,8 +39,6 @@ function getAllPropertys(string, res) {
     });
 }
 
-
-
 router.get("/", function(req, res) {
 
     prop.find().sort({name: 1}).exec(function(err, items) {
@@ -55,6 +53,16 @@ router.get("/", function(req, res) {
     });
 
 });
+
+// REGISTER ROUTES
+router.get("/googleMaps", function(req, res) {
+    res.render("googleMap", {
+        version: pjson.version,
+        admin: false,
+        user: req.user
+    });
+});
+
 
 
 // REGISTER ROUTES

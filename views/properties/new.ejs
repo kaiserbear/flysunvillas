@@ -17,14 +17,14 @@
                     <div class="col-5">
                         <div class="form-group">
                             <label>Title</label>
-                            <input class="form-control" type="text" name="title" placeholder="Example of a title" >
+                            <input class="form-control" type="text" name="title" placeholder="Example of a title" required >
                         </div>
                     </div>
                     <div class="col-7">
                         <div class="form-group">
                             <label>URL</label>
                             <div class="form--input__url">
-                                <input id="domain-url" class="form-control" type="text" name="slug" placeholder="enter-a-nice-url"  />
+                                <input id="domain-url" class="form-control" type="text" name="slug" placeholder="enter-a-nice-url" required />
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="col-7">
                         <div class="form-group">
                             <label>Location</label>
-                            <input class="form-control" type="text" name="location" placeholder="e.g. Alicante, Spain" >
+                            <input class="form-control" type="text" name="location" placeholder="e.g. Alicante, Spain" required >
                             <!-- hidden input for  -->
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                         <div class="image-upload" class="form-group">
                             <label>Main Property Image</label>
                             <input type="hidden" name="mImage" />
-                            <input type="file" class="form-control file-input" accept=".jpg,.png" placeholder="Upload Image">
+                            <input type="file" class="form-control file-input" accept=".jpg,.png" placeholder="Upload Image" required>
                             <img class="previewImage" src="" />
                             <progress class="progress" value="0"></progress>
                         </div>
@@ -73,7 +73,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label>Development Description</label>
-                            <textarea class="form-control" type="text" name="devDesc" placeholder="Describe the development in approx 100 words" ></textarea>
+                            <textarea class="form-control" type="text" name="devDesc" placeholder="Describe the development in approx 100 words" required ></textarea>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label>Property Description</label>
-                            <textarea class="form-control" type="text" name="propDesc" placeholder="Describe this property in approx 100 words" ></textarea>
+                            <textarea class="form-control" type="text" name="propDesc" placeholder="Describe this property in approx 100 words" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -113,21 +113,21 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label>Beds</label>
-                            <input class="form-control" type="text" name="bed" placeholder="e.g. 3" >
+                            <input class="form-control" type="text" name="bed" placeholder="e.g. 3" required>
                         </div>
                     </div>
 
                     <div class="col-4">
                         <div class="form-group">
                             <label>Baths</label>
-                            <input class="form-control" type="text" name="bath" placeholder="e.g. 2" >
+                            <input class="form-control" type="text" name="bath" placeholder="e.g. 2" required>
                         </div>
                     </div>
 
                     <div class="col-4">
                         <div class="form-group">
                             <label>House Built Area</label>
-                            <input class="form-control" type="text" name="hba" placeholder="e.g. 3" >
+                            <input class="form-control" type="text" name="hba" placeholder="e.g. 3" required>
                         </div>
                     </div>
 

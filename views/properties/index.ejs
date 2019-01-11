@@ -10,11 +10,11 @@
 		<div class="row">
             <% props.forEach(function(item) { %>
 				<a href="/properties/<%= item.slug %>" class="col-sm-12 col-md-4 each-prop">
-                    <img src="<%= item.mImage %>" alt="<%= item.title %>" />
-                    <div class="desc">
-                        
-                        <h4><%= item.location %></h4>
-                        <p><%= item.propDesc %></p>
+                    <div class="prop">
+                        <img src="<%= item.mImage %>" alt="<%= item.title %>" />
+                        <div class="desc">    
+                            <h4><%= item.location %></h4>
+                        </div>
                     </div>
                 </a>
             <% }); %>

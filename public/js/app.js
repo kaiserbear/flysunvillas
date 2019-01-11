@@ -34,7 +34,6 @@ function toggleMenu() {
     var hamburgerMenu = document.getElementById("fsv--menu__button");
     if (hamburgerMenu) {
         hamburgerMenu.onclick = function(e) {
-
             if (primaryNav.classList.contains('active')) {
                 // contentEl.classList.toggle('active');
                 primaryNav.classList.toggle('active');
@@ -46,14 +45,16 @@ function toggleMenu() {
                 }, 400);
 
             }
-
             hamburgerMenu.classList.toggle("open");
-
         }
     }
-
 }
 
+function yearFooter(){
+    var d = new Date();
+    var n = d.getFullYear();
+    document.getElementById("date-year").innerHTML = n;
+}
 
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {
@@ -65,6 +66,7 @@ function init() {
     fadeOutFAlert();
     navScroll();
     toggleMenu();
+    yearFooter();
 }
 
 init();

@@ -18,14 +18,14 @@
                     <div class="col-5">
                         <div class="form-group">
                             <label>Title</label>
-                            <input class="form-control" type="text" name="page[title]" value="<%= prop.title %>"  >
+                            <input class="form-control" type="text" name="page[title]" value="<%= prop.title %>" required>
                         </div>
                     </div>
                     <div class="col-7">
                         <div class="form-group">
                             <label>URL</label>
                             <div class="form--input__url">
-                                <input id="domain-url" class="form-control" type="text" name="page[slug]" value="<%= prop.slug %>"  />
+                                <input id="domain-url" class="form-control" type="text" name="page[slug]" value="<%= prop.slug %>"  required/>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="col-7">
                         <div class="form-group">
                             <label>Location</label>
-                            <input class="form-control" type="text" name="page[location]" value="<%= prop.location %>" >
+                            <input class="form-control" type="text" name="page[location]" value="<%= prop.location %>" required>
                             <!-- hidden input for  -->
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label>Development Description</label>
-                            <textarea class="form-control" type="text" name="page[devDesc]"><%= prop.devDesc %></textarea>
+                            <textarea class="form-control" type="text" name="page[devDesc]" required><%= prop.devDesc %></textarea>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label>Property Description</label>
-                            <textarea class="form-control" type="text" name="page[propDesc]"><%= prop.propDesc %></textarea>
+                            <textarea class="form-control" type="text" name="page[propDesc]" required><%= prop.propDesc %></textarea>
                         </div>
                     </div>
                 </div>
@@ -132,21 +132,21 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label>Beds</label>
-                            <input class="form-control" type="text" name="page[bed]" value="<%= prop.bed %>" autocomplete="off">
+                            <input class="form-control" type="text" name="page[bed]" value="<%= prop.bed %>" required>
                         </div>
                     </div>
 
                     <div class="col-4">
                         <div class="form-group">
                             <label>Baths</label>
-                            <input class="form-control" type="text" name="page[bath]" value="<%= prop.bath %>" >
+                            <input class="form-control" type="text" name="page[bath]" value="<%= prop.bath %>" required>
                         </div>
                     </div>
 
                     <div class="col-4">
                         <div class="form-group">
                             <label>House Built Area</label>
-                            <input class="form-control" type="text" name="page[hba]" value="<%= prop.hba %>" >
+                            <input class="form-control" type="text" name="page[hba]" value="<%= prop.hba %>" required>
                         </div>
                     </div>
 
