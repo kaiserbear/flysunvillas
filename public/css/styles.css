@@ -6487,7 +6487,7 @@ progress {
   color: #102551; }
 
 main.login {
-  height: calc(100% - 363px); }
+  min-height: calc(100% - 363px); }
 
 .alerts {
   border-radius: 0;

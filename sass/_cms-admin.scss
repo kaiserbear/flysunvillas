@@ -62,6 +62,6 @@ progress {
 
 main {
     &.login {
-        height: calc(100% - 363px);
+        min-height: calc(100% - 363px);
     }
 }
