@@ -6604,7 +6604,6 @@ section {
   top: 10%; }
 
 .page--content a {
-  background: white;
   padding: 0; }
   .page--content a:hover {
     text-decoration: none; }
@@ -6613,7 +6612,8 @@ section {
   .page--content a img {
     width: 100%; }
   .page--content a .prop {
-    margin: 0 1rem; }
+    margin: 0 1rem;
+    background: white; }
 
 .prop--heading {
   background-size: cover;
