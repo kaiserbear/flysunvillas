@@ -6603,6 +6603,16 @@ section {
   z-index: 5;
   top: 10%; }
 
+.prop--gallery .gallery-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.prop--gallery img {
+  max-height: 300px;
+  display: flex;
+  margin: 0 1rem 1rem 0; }
+
 .page--content a {
   padding: 0; }
   .page--content a:hover {

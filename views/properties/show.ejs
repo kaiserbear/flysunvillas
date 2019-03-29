@@ -53,6 +53,23 @@
     </div>
 </section> 
 
+
+<section class="prop--gallery">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>Property Images</h3>
+                <!-- Gallery Images -->
+                <div class="gallery-row">
+                    <% prop.gImage.forEach(function(gImage) { %>
+                        <img src="<%= gImage %>" alt="<%= prop.title %> 1" />
+                    <% }); %>
+                </div>
+            </div>
+        </div> 
+    </div>
+</section> 
+
               
 
 <!-- Modal -->
